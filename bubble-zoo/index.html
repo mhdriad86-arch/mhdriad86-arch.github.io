@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bubble Zoo">
+<meta name="theme-color" content="#7ad3ff">
+<meta name="format-detection" content="telephone=no">
+<title>Bubble Zoo</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <section id="home" class="screen active">
+    <div class="title" aria-label="Bubble Zoo"></div>
+    <div class="menu">
+      <button class="tile" data-go="bubbles" aria-label="Bubble Pop" style="--c:#7ad3ff"></button>
+      <button class="tile" data-go="sounds" aria-label="Animal Sounds" style="--c:#ffd36e"></button>
+      <button class="tile" data-go="shapes" aria-label="Colors and Shapes" style="--c:#a6e57a"></button>
+    </div>
+  </section>
+  <section id="bubbles" class="screen"><div class="stage" id="bubbleStage"></div></section>
+  <section id="sounds" class="screen"><div class="grid" id="animalGrid"></div></section>
+  <section id="shapes" class="screen"><div class="shapeStage" id="shapeStage"></div></section>
+  <button id="homeBtn" aria-label="Home (press and hold)">
+    <svg viewBox="0 0 60 60"><circle class="ringBg" cx="30" cy="30" r="26"/><circle class="ring" cx="30" cy="30" r="26"/>
+    <path d="M18 31 L30 20 L42 31 M22 29 V41 H38 V29" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <canvas id="fx"></canvas>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

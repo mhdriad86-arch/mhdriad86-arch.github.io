@@ -1,0 +1,42 @@
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none;touch-action:none;position:fixed;inset:0;font-family:-apple-system,system-ui,sans-serif}
+body{background:linear-gradient(#8fdcff,#d9f4ff)}
+#app{position:absolute;inset:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.screen{position:absolute;inset:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);display:none}
+.screen.active{display:flex}
+button{border:0;background:none;padding:0;font:inherit;cursor:pointer;touch-action:manipulation}
+#home{flex-direction:column;align-items:center;justify-content:center;gap:4vmin}
+.title{font-size:0;width:0;height:0}
+.menu{display:flex;flex-wrap:wrap;gap:5vmin;justify-content:center;align-items:center;width:100%;height:100%;padding:4vmin}
+@media (orientation:portrait){.menu{flex-direction:column}}
+.tile{width:min(38vmin,40vh,260px);height:min(38vmin,40vh,260px);min-width:120px;min-height:120px;border-radius:30%;background:var(--c);box-shadow:0 10px 0 rgba(0,0,0,.12),inset 0 -10px 0 rgba(0,0,0,.08);animation:bob 3s ease-in-out infinite;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.tile:nth-child(2){animation-delay:-1s}.tile:nth-child(3){animation-delay:-2s}
+.tile:active{transform:scale(.92)}
+.tile svg{width:80%;height:80%}
+@keyframes bob{50%{translate:0 -8px}}
+#homeBtn{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:calc(env(safe-area-inset-left) + 10px);width:60px;height:60px;display:none;z-index:20;opacity:.75}
+#homeBtn.show{display:block}
+#homeBtn svg{width:100%;height:100%}
+.ringBg{fill:rgba(0,0,0,.25)}
+.ring{fill:none;stroke:#fff;stroke-width:5;stroke-dasharray:163.4;stroke-dashoffset:163.4;transform:rotate(-90deg);transform-origin:center}
+#homeBtn.hold .ring{transition:stroke-dashoffset 1.5s linear;stroke-dashoffset:0}
+.stage{position:absolute;inset:0;overflow:hidden}
+.bubble{position:absolute;border-radius:50%;will-change:transform;display:flex;align-items:center;justify-content:center}
+.bubble .glass{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.95) 0 8%,rgba(255,255,255,.25) 9% 30%,transparent 60%),radial-gradient(circle,transparent 58%,var(--c) 100%);border:4px solid rgba(255,255,255,.7)}
+.bubble svg{width:72%;height:72%;position:relative}
+.bubble.pop{animation:pop .25s ease-out forwards}
+@keyframes pop{to{transform:var(--t) scale(1.6);opacity:0}}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3vmin;width:100%;height:100%;padding:80px 4vmin 4vmin}
+@media (orientation:landscape){.grid{grid-template-columns:repeat(4,1fr);padding:4vmin 4vmin 4vmin 84px}}
+.animal{border-radius:28px;background:var(--c);box-shadow:0 8px 0 rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;min-height:100px}
+.animal svg{width:min(85%,85%);height:85%}
+.animal.bounce svg{animation:bounce .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bounce{0%{transform:scale(1)}30%{transform:scale(1.25,.8)}60%{transform:scale(.9,1.15) translateY(-12%)}100%{transform:scale(1)}}
+.shapeStage{position:absolute;inset:0}
+.slot,.piece{position:absolute;width:150px;height:150px}
+.slot svg,.piece svg{width:100%;height:100%;overflow:visible}
+.piece{z-index:5;touch-action:none;filter:drop-shadow(0 8px 0 rgba(0,0,0,.15))}
+.piece.dragging{transform:scale(1.12)}
+.piece.snap{transition:left .25s ease,top .25s ease}
+.slot.done svg{animation:bounce .6s}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:30}
