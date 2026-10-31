@@ -12,27 +12,60 @@
 <title>Bubble Zoo</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 <div id="app">
   <section id="home" class="screen active">
-    <div class="title" aria-label="Bubble Zoo"></div>
     <div class="menu">
       <button class="tile" data-go="bubbles" aria-label="Bubble Pop" style="--c:#7ad3ff"></button>
       <button class="tile" data-go="sounds" aria-label="Animal Sounds" style="--c:#ffd36e"></button>
       <button class="tile" data-go="shapes" aria-label="Colors and Shapes" style="--c:#a6e57a"></button>
+      <button class="tile" data-go="count" aria-label="Counting" style="--c:#ffb27a"></button>
+      <button class="tile" data-go="music" aria-label="Xylophone" style="--c:#ff9ec4"></button>
+      <button class="tile" data-go="paint" aria-label="Finger Paint" style="--c:#fff2a8"></button>
+      <button class="tile" data-go="memory" aria-label="Memory Match" style="--c:#d4c2ff"></button>
+      <button class="tile" data-go="peek" aria-label="Peekaboo" style="--c:#b8f0c0"></button>
+      <button class="tile" data-go="vehicles" aria-label="Vehicles" style="--c:#9fd8ff"></button>
+      <button class="tile" data-go="stickers" aria-label="Sticker Book" style="--c:#ffd0d0"></button>
     </div>
+    <button id="gearBtn" aria-label="Parent settings (press and hold)">
+      <svg viewBox="0 0 60 60"><circle class="ringBg" cx="30" cy="30" r="26"/><circle class="ring" cx="30" cy="30" r="26"/>
+      <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"><circle cx="30" cy="30" r="7"/><path d="M30 14v5M30 41v5M14 30h5M41 30h5M19 19l3.5 3.5M37.5 37.5L41 41M41 19l-3.5 3.5M22.5 37.5L19 41"/></g></svg>
+    </button>
   </section>
   <section id="bubbles" class="screen"><div class="stage" id="bubbleStage"></div></section>
   <section id="sounds" class="screen"><div class="grid" id="animalGrid"></div></section>
+  <section id="vehicles" class="screen"><div class="grid g6" id="vehicleGrid"></div></section>
   <section id="shapes" class="screen"><div class="shapeStage" id="shapeStage"></div></section>
+  <section id="count" class="screen"><div id="countNum" class="countNum"></div><div id="countStage" class="countStage"></div></section>
+  <section id="music" class="screen"><div id="keys" class="keys"></div>
+    <button id="songBtn" aria-label="Play a song"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#ff5d8f"/><path d="M38 28 L74 50 L38 72Z" fill="#fff"/></svg></button></section>
+  <section id="paint" class="screen"><canvas id="paintCanvas"></canvas><div id="palette" class="palette"></div></section>
+  <section id="memory" class="screen"><div id="memGrid" class="memGrid"></div></section>
+  <section id="peek" class="screen"><div id="peekStage" class="peekStage"></div></section>
+  <section id="stickers" class="screen"><div id="stickerBook" class="stickerBook"></div></section>
   <button id="homeBtn" aria-label="Home (press and hold)">
     <svg viewBox="0 0 60 60"><circle class="ringBg" cx="30" cy="30" r="26"/><circle class="ring" cx="30" cy="30" r="26"/>
     <path d="M18 31 L30 20 L42 31 M22 29 V41 H38 V29" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
+  <div id="toast"></div>
   <canvas id="fx"></canvas>
+  <div id="settings">
+    <div class="panel">
+      <h2>Parent settings</h2>
+      <label>Volume <input type="range" id="setVol" min="0" max="100"></label>
+      <label class="row">Spoken words <input type="checkbox" id="setVoice"></label>
+      <label>Language for spoken words
+        <select id="setLang"><option value="en">English</option><option value="ar">العربية (Arabic)</option><option value="de">Deutsch (German)</option></select></label>
+      <button id="setTest" class="pbtn">Test sound</button>
+      <button id="setResetLv" class="pbtn light">Reset difficulty to easy</button>
+      <button id="setResetSt" class="pbtn light">Clear sticker book</button>
+      <p class="hint">Levels get harder on their own as your child succeeds. Arabic and German use the voices installed on the iPhone (Settings → Accessibility → Spoken Content → Voices).</p>
+      <button id="setClose" class="pbtn">Done</button>
+    </div>
+  </div>
 </div>
-<script src="app.js"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>
